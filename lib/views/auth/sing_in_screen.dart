@@ -62,10 +62,14 @@ class SingInScreen extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      await _authController.registerController(
+                      var response = await _authController.registerController(
                           gmail: emailController.text,
                           password: passwordController.text);
-                      await Get.to(HomeScreen());
+                      if (response != null) {
+                        await Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
+                      }
                     }
                   },
                   child: const Text("Register"),

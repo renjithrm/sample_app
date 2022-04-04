@@ -18,8 +18,8 @@ class AuthController extends GetxController {
       print(response);
       var jsonResponse = jsonDecode(response);
       SaveId.saveId(jsonResponse["token"]);
-
-      print(jsonResponse);
+      return jsonResponse;
+      // print(jsonResponse);
     }
   }
 
@@ -34,6 +34,7 @@ class AuthController extends GetxController {
       var jsonResponse = jsonDecode(response);
       SaveId.saveId(jsonResponse["token"]);
       print(jsonResponse);
+      return jsonResponse;
     }
   }
 }

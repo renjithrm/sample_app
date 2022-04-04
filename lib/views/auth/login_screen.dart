@@ -67,12 +67,14 @@ class _LoginScreenState extends State<LoginScreen> {
                 child: ElevatedButton(
                   onPressed: () async {
                     if (_formKey.currentState!.validate()) {
-                      await _authController.loginController(
+                      var response = await _authController.loginController(
                           gmail: emailController.text,
                           password: passwordController.text);
-                      await Navigator.of(context).pushReplacement(
-                          MaterialPageRoute(
-                              builder: (context) => HomeScreen()));
+                      if (response != null) {
+                        await Navigator.of(context).pushReplacement(
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()));
+                      }
                     }
                   },
                   child: const Text("Login"),
